@@ -24,6 +24,41 @@ main
     text-justify: center;
 }
 
+.enlaces{
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30rem;
+}
+
+a{
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: grey;
+    background-color: rgb(229, 229, 229);
+	color: #080808;
+    text-decoration: none;
+    padding: 0.25rem;
+    margin: 0.5rem;
+}
+
+a:visited{
+	color: rgb(0, 247, 111);	
+}
+
+a:hover{
+	color:rgb(0, 241, 204);
+    transition-duration: 0.5s;
+    background-color: rgb(149, 149, 149);
+}
+
+a:not(hover){
+    transition-duration: 0.5s;
+}
+
+
+
 footer{
     grid-area: footer;
 	clear: both;
