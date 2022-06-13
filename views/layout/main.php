@@ -9,10 +9,11 @@
             <input type="submit" value="Entrar">
         </form>
     <?php elseif(isset($_SESSION['usuario'])):?>
-        <h3>Bienvenido <?=$_SESSION['usuario']->nombre?></h3>
+        <h3>Bienvenido <?=$_SESSION['usuario']['nombre']?></h3>
         <?php require_once 'views/usuario/home.php';?>
-    <?php else:?>
-        <h3>Bienvenido <?=$_SESSION['admin']->nombre?></h3>
+    <?php elseif(isset($_SESSION['admin'])):?>
+        <p>eres admin</p>
+        <h3>Bienvenido <?=$_SESSION['admin']['nombre']?></h3>
         <?php require_once 'views/admin/home.php';?>
     <?php endif;?>
 </main>

@@ -14,12 +14,27 @@
             if(isset($_POST))
             {
                 $usuario = new UsuarioRepository();
-                echo $_POST['dni'];
-                echo $_POST['password'];
                 $usuario->setDni($_POST['dni']);
                 $usuario->setPassword($_POST['password']);
                 $datos = $usuario->identificar();
-                var_dump($datos);
+                
+                if($datos && is_array($datos))
+                {
+                    if($datos['rol'] == 'admin')
+                    {
+                        $_SESSION['admin'] = $datos;
+                    }elseif($datos['rol'] == 'usuario')
+                    {
+                        $_SESSION['usuario'] = $datos;
+                    }else
+                    {
+                        echo "El usuario registrado no tiene un rol correcto";
+                    }
+                }else
+                {
+                    echo "Identificación fallida";
+                }
             }
+            header('Location: '.base_url);
         }
     }
