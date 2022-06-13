@@ -14,7 +14,6 @@
 
         public function identificar()
         {
-            echo "has entrado en identificar";
             $dni = $this->getDni();
             $password = $this->getPassword();
             $resultado = false;
@@ -22,7 +21,14 @@
             $inicio = $this->db->prepare($sql);
             $inicio->bindParam(':dni', $dni, PDO::PARAM_STR);
             $inicio->execute();
-            var_dump($inicio);
-            echo "Has llegado al final de identificar";
+            if($inicio)
+            {
+                $datos = $inicio->fetch(PDO::FETCH_ASSOC);
+                if($password == $datos['password'])
+                {
+                    $resultado = $datos;
+                }
+            }
+            return $resultado;
         }
     }
