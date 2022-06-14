@@ -11,16 +11,16 @@
     <?php elseif (isset($_SESSION['usuario'])) : ?>
         <h1>Bienvenido <?= $_SESSION['usuario']['nombre'] ?></h1>
         <div class="enlaces">
-            <a href="<?= base_url ?>movimiento/cinco">Muestra los últimos 5 movimientos</a><br>
-            <a href="<?= base_url ?>movimiento/muestraTodos">Muestra todos los movimientos</a><br>
+            <a href="<?= base_url ?>movimiento/cinco">Mostrar los últimos 5 movimientos</a><br>
+            <a href="<?= base_url ?>movimiento/muestraTodos">Mostrar todos los movimientos</a><br>
             <a href="<?= base_url ?>movimiento/creaMovimiento">Nuevo movimiento</a><br>
             <a href="<?= base_url ?>usuario/logout">Cerrar sesión</a><br>
         </div>
     <?php elseif (isset($_SESSION['admin'])) : ?>
         <h1>Bienvenido <?= $_SESSION['admin']['nombre'] ?></h1>
         <div class="enlaces">
-            <a href="<?=base_url?>usuario/muestraUsuarios">Muestrar usuarios</a><br>
-            <a href="<?=base_url?>usuario/muestraAdministradores">Muestrar administradores</a><br>
+            <a href="<?=base_url?>usuario/muestraUsuarios">Mostrar usuarios</a><br>
+            <a href="<?=base_url?>usuario/muestraAdministradores">Mostrar administradores</a><br>
             <a href="<?=base_url?>usuario/crear">Crear usuario</a><br>
             <a href="<?=base_url?>usuario/logout">Cerrar sesión</a><br>
         </div>

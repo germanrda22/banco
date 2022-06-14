@@ -72,4 +72,32 @@
             }
             return $resultado;
         }
+
+        public function generar()
+        {
+            $dni = $this->getDni();
+            $nombre = $this->getNombre();
+            $apellidos = $this->getApellidos();
+            $telefono = $this->getTelefono();
+            $email = $this->getEmail();
+            $password = $this->getPassword();
+            $rol = $this->getRol();
+            $saldo = $this->getSaldo();
+            $sql = "INSERT INTO usuario VALUES (:dni, :nombre, :apellidos, :telefono, :email, :password, :rol, :saldo)";
+            $insercion = $this->db->prepare($sql);
+            $insercion->bindParam(':dni', $dni, PDO::PARAM_STR);
+            $insercion->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+            $insercion->bindParam(':apellidos', $apellidos, PDO::PARAM_STR);
+            $insercion->bindParam(':telefono', $telefono, PDO::PARAM_STR);
+            $insercion->bindParam(':email', $email, PDO::PARAM_STR);
+            $insercion->bindParam(':password',$password, PDO::PARAM_STR);
+            $insercion->bindParam(':rol', $rol, PDO::PARAM_STR);
+            $insercion->bindParam(':saldo', $saldo, PDO::PARAM_INT);
+            $insercion->execute();
+            if($insercion)
+            {
+                $resultado = "Usuario creado con éxito";
+            }
+            return $resultado;
+        }
     }

@@ -73,4 +73,31 @@
         {
             require_once 'views/admin/crearUsuario.php';
         }
+
+        public function generaUsuario()
+        {
+            if(isset($_POST))
+            {
+                $usuario = new UsuarioRepository();
+                $usuario->setDni($_POST['dni']);
+                $usuario->setNombre($_POST['nombre']);
+                $usuario->setApellidos($_POST['apellidos']);
+                $usuario->setTelefono($_POST['telefono']);
+                $usuario->setEmail($_POST['email']);
+                $usuario->setPassword($_POST['password']);
+                $usuario->setRol($_POST['rol']);
+                if($_POST['saldo'] == '')
+                {
+                    $usuario->setSaldo(NULL);
+                }else
+                {
+                    $usuario->setSaldo($_POST['saldo']);
+                }
+                $nuevo_usuario = $usuario->generar();
+                echo "<div>";
+                echo $nuevo_usuario;
+                echo "<a href=" . base_url . ">Volver a inicio</a>";
+                echo "</div>";
+            }
+        }
     }
