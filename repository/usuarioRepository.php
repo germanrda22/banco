@@ -27,7 +27,48 @@
                 if($password == $datos['password'])
                 {
                     $resultado = $datos;
+                }else
+                {
+                    $resultado = "Usuario o contraseña incorrectos";
                 }
+            }
+            return $resultado;
+        }
+
+        public function sacaUsuarios()
+        {
+            $sql = "SELECT * FROM usuario WHERE rol = 'usuario'";
+            $usuario = $this->db->prepare($sql);
+            $usuario->execute();
+            if($usuario)
+            {
+                $usuarios = $usuario->fetchAll(PDO::FETCH_ASSOC);
+            }
+            return $usuarios;
+        }
+
+        public function sacaAdministradores()
+        {
+            $sql = "SELECT * FROM usuario WHERE rol = 'admin'";
+            $usuario = $this->db->prepare($sql);
+            $usuario->execute();
+            if($usuario)
+            {
+                $administradores = $usuario->fetchAll(PDO::FETCH_ASSOC);
+            }
+            return $administradores;
+        }
+
+        public function borra()
+        {
+            $dni = $this->getDni();
+            $sql = "DELETE FROM usuario WHERE dni = :dni";
+            $usuario = $this->db->prepare($sql);
+            $usuario->bindParam(':dni', $dni, PDO::PARAM_STR);
+            $usuario->execute();
+            if($usuario)
+            {
+                $resultado = "Borrado con éxito";
             }
             return $resultado;
         }

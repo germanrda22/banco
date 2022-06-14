@@ -27,8 +27,14 @@ CREATE TABLE movimiento
 )
 ENGINE=InnoDb;
 INSERT INTO usuario
-VALUES  ('78224235Q', 'Germán', 'Ruiz del Arco', '637628727', 'admin@gmail.com', 'admin', 'admin', NULL), 
-        ('23804454F', 'Javier', 'Rodriguez Gallegos', '678457585', 'javi@gmail.com', 'javi', 'usuario', '250849');
+VALUES ('78224235Q', 'Germán', 'Ruiz del Arco', '637628727', 'admin@gmail.com', 'admin', 'admin', NULL); 
+INSERT INTO usuario       
+VALUES ('23804454F', 'Javier', 'Rodriguez Gallegos', '678457585', 'javi@gmail.com', 'javi', 'usuario', 250849);
+
+INSERT INTO usuario
+VALUES  ('78139625T', 'Admin', 'Rodríguez Gallegos', '675018068', 'admingod@gmail.com', 'admin', 'admin', NULL);
+INSERT INTO usuario
+VALUES  ('88663322R', 'Gerardo', 'Cueva Pera', '896321457', 'gcp@gmail.com', 'gerardo', 'usuario', 75034928);
 INSERT INTO movimiento
-VALUES  (NULL, '23804454F', '+50', '2022-06-10', 'Cobro dietas y desplazamiento'), 
-        (NULL, '23804454F', '-200', '2022-06-09', 'Luz y agua');
+VALUES  (NULL, '23804454F', +50, '2022-06-10', 'Cobro dietas y desplazamiento'), 
+        (NULL, '23804454F', -200, '2022-06-09', 'Luz y agua');

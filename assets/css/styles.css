@@ -20,15 +20,15 @@ img
 main
 {
     grid-area: main;
+    width: 100%;
+    display: flex;
     text-align: center;
-    text-justify: center;
 }
 
 .enlaces{
-    align-self: center;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
     width: 30rem;
 }
 
@@ -57,7 +57,9 @@ a:not(hover){
     transition-duration: 0.5s;
 }
 
-
+td{
+    text-justify: center;
+}
 
 footer{
     grid-area: footer;

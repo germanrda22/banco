@@ -1,13 +1,12 @@
-<table>
+<table border="1">
     <tr>
         <th>Cantidad</th>
         <th>Fecha</th>
         <th>Concepto</th>
     </tr>
     <?php
-        for($i = 0; $i < 5; $i++)
+        foreach($movimientos as $movimiento)
         {
-            $movimiento = $movimientos[$i];
             echo "<tr>";
             echo "<td>". $movimiento['cantidad'] ."</td>";
             echo "<td>". $movimiento['fecha'] ."</td>";

@@ -26,15 +26,51 @@
                     }elseif($datos['rol'] == 'usuario')
                     {
                         $_SESSION['usuario'] = $datos;
-                    }else
-                    {
-                        echo "El usuario registrado no tiene un rol correcto";
                     }
                 }else
                 {
-                    echo "Identificación fallida";
+                    echo $datos;
                 }
             }
             header('Location: '.base_url);
+        }
+
+        public function logout()
+        {
+            session_destroy();
+            header('Location: '.base_url);
+        }
+
+        public function muestraUsuarios()
+        {
+            $usuario = new UsuarioRepository();
+            $usuarios = $usuario->sacaUsuarios();
+            require_once 'views/admin/usuarios.php';
+        }
+        
+        public function muestraAdministradores()
+        {
+            $usuario = new UsuarioRepository();
+            $administradores = $usuario->sacaAdministradores();
+            require_once 'views/admin/administradores.php';
+        }
+
+        public function borrar()
+        {
+            if($_GET['dni'])
+            {
+                $usuario = new UsuarioRepository();
+                $usuario->setDni($_GET['dni']);
+                $mensaje = $usuario->borra();
+                echo "<div>";
+                echo $mensaje;
+                echo "<a href=" . base_url . ">Volver a inicio</a>";
+                echo "</div>";
+            }
+        }
+
+        public function crear()
+        {
+            require_once 'views/admin/crearUsuario.php';
         }
     }

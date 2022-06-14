@@ -23,8 +23,28 @@
             $muestraTodas->execute();
             if($muestraTodas)
             {
-                $resultado = $muestraTodas->fetch(PDO::FETCH_OBJ);
-                var_dump($resultado);
+                $resultado = $muestraTodas->fetchAll(PDO::FETCH_ASSOC);
+            }
+            return $resultado;
+        }
+
+        public function insertar()
+        {
+            $cantidad = $this->getCantidad();
+            $concepto = $this->getConcepto();
+            $fecha = $this->getFecha();
+            $dni_usuario = $_SESSION['usuario']['dni'];
+            $resultado = false;
+            $sql = "INSERT INTO movimiento VALUES (NULL, :dni_usuario, :cantidad, :fecha, :concepto)";
+            $insercion = $this->db->prepare($sql);
+            $insercion->bindParam(':dni_usuario', $dni_usuario, PDO::PARAM_STR);
+            $insercion->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
+            $insercion->bindParam(':fecha', $fecha, PDO::PARAM_STR);
+            $insercion->bindParam(':concepto', $concepto, PDO::PARAM_STR);
+            $insercion->execute();
+            if($insercion)
+            {
+                $resultado = "Inserción realizada con éxito";
             }
             return $resultado;
         }

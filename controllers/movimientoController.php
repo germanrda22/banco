@@ -9,7 +9,7 @@
             $movimiento = new MovimientoRepository();
             $dniUsuario = $_SESSION['usuario']['dni'];
             $movimiento->setDni_usuario($dniUsuario);
-            $movimiento->muestraTodas();
+            $movimientos = $movimiento->muestraTodas();
             require_once 'views/movimiento/muestraCinco.php';
         }
 
@@ -18,7 +18,7 @@
             $movimiento = new MovimientoRepository();
             $dniUsuario = $_SESSION['usuario']['dni'];
             $movimiento->setDni_usuario($dniUsuario);
-            $movimiento->muestraTodas();
+            $movimientos = $movimiento->muestraTodas();
             require_once 'views/movimiento/muestraTodos.php';
         }
 
@@ -27,8 +27,17 @@
             require_once 'views/movimiento/crear.php';
         }
 
-        public function insertar()
+        public function introducir()
         {
-            
+            if(isset($_POST))
+            {
+                $movimiento = new MovimientoRepository();
+                $movimiento->setCantidad($_POST['cantidad']);
+                $movimiento->setConcepto($_POST['concepto']);
+                $movimiento->setFecha(date('Y-m-d'));
+                $insertado = $movimiento->insertar();
+
+                header('Location '.base_url);
+            }
         }
     }
