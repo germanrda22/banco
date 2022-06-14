@@ -37,7 +37,7 @@
                 $movimiento->setFecha(date('Y-m-d'));
                 $insertado = $movimiento->insertar();
 
-                header('Location '.base_url);
+                header('Location '.base_url.'usuario/actualizar');
             }
         }
     }

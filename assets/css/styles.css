@@ -17,8 +17,12 @@ img
     width: auto;
     height: 100px;
 }
+
 main
 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     grid-area: main;
     width: 100%;
     display: flex;
@@ -29,11 +33,11 @@ main
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
     width: 30rem;
 }
 
 a{
+    align-items: center;
     border-width: 1px;
     border-radius: 3px;
     border-color: grey;

@@ -100,4 +100,10 @@
                 echo "</div>";
             }
         }
+
+        public function actualizar()
+        {
+            $saldoActual = $_SESSION['usuario']['saldo'];
+
+        }
     }
